@@ -104,4 +104,13 @@ class DataConvert extends RulesActionBase {
     $this->setProvidedValue('conversion_result', $result);
   }
 
+  /**
+   * {@inheritdoc}
+   */
+  public function refineContextDefinitions() {
+    if ($type = $this->getContextValue('target_type')) {
+      $this->pluginDefinition['provides']['conversion_result']->setDataType($type);
+    }
+  }
+
 }
